@@ -1,0 +1,60 @@
+.wrapper {
+    --borderRadius: 92px; //đặt biến borderRadius
+    --search-height: 46px; //đặt biến searchHeight
+    --search-top-spacer: 9px; //khoảng cách bên trên line
+    --search-button-width: 52px; //khoảng cách chiều dài của button search
+
+    width: 100%;
+    height: var(--default-layout-header-height, 60px);
+    box-shadow: 0 1px 1px rgba(0 0 0 / 12%);
+    display: flex;
+    justify-content: center;
+}
+
+.inner {
+    width: var(--default-layout-width);
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+}
+
+//LOGO
+.logo {
+    display: flex;
+}
+
+//ACTIONS
+.actions {
+    display: flex;
+    // align-items: center;
+    // gap: 24px;
+}
+
+.actions-btn {
+    font-size: 2.2rem;
+    background-color: transparent;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    padding: 4px 12px;
+    line-height: 0.2rem;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: wheat;
+    margin: 0 12px;
+    cursor: pointer;
+}
+
+//
+.more-btn {
+    font-size: 2rem;
+    margin-left: 28px;
+    padding: 4px 8px;
+    background-color: transparent;
+    cursor: pointer;
+}
