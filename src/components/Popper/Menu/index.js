@@ -58,7 +58,7 @@ function Menu({ children, items = [], hideOnClick = false ,onChange = defaultFn 
                                 }} //Back history (nhấn nút back để trở lại vị trí trước đó)
                             />
                         )}
-                        {renderItems()}
+                        <div className={cx('menu-body')}>{renderItems()}</div>
                         {/* Render item của menu (các ngôn ngữ MENU_ITEMS)*/}
                     </PopperWrapper>
                 </div>
