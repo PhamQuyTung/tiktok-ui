@@ -11,7 +11,7 @@ import { Wrapper as PopperWrapper } from '~/components/Popper/'; //Hay bị nh�
 import AccountItem from '~/components/AccountItem';
 import styles from './Search.module.scss';
 import { useDebounce } from '~/hooks'; //hooks tự tạo ra
-import * as searchServices from '~/apiServices/searchServices';
+import * as searchService from '~/services/searchService';
 //Icons
 import { SearchIcon } from '~/components/Icons';
 
@@ -57,7 +57,7 @@ function SearchHeader() {
 
         const fetchApi = async () => {
             setLoading(true);
-            const result = await searchServices.search(debounce);
+            const result = await searchService.search(debounce);
             setSearchResult(result);
             setLoading(false);
         };

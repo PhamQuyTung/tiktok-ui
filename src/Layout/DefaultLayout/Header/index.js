@@ -14,8 +14,7 @@ import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
 import Image from '~/components/Image/';
 import Search from '~/components/Search';
-import RoutesConfig from '~/config/routes';
-
+import config from '~/config';
 
 //Icons
 import {
@@ -303,7 +302,7 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 {/* lOGO */}
-                <Link to={RoutesConfig.home} className={cx('logo')}>
+                <Link to={config.routes.home} className={cx('logo')}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 118 42"

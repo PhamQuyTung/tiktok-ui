@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; //B1
 //B2: làm bằng cách "Đưa cấu hình routes ra ngoài" dễ dàng add thêm Router nhanh-gọn-lẹ
 import { publicRoutes } from '~/routes'; //import publicRoutes từ file routes mới tạo
-import { DefaultLayout } from '~/components/Layout'; // cách viết gọn thay cho cách viết dài import DefaultLayout from '~/component/Layout/DefaultLayout';
+import DefaultLayout from '~/Layout'; // cách viết gọn thay cho cách viết dài import DefaultLayout from '~/component/Layout/DefaultLayout';
 
 function App() {
     return (
@@ -26,7 +26,7 @@ function App() {
                             path={route.path}
                             element={
                                 <Layout>
-                                    <Page />{' '}
+                                    <Page />
                                     {/* Vì <Page thành children của Layout (DefaultLayout) mà DefaultLayout lại nhận children */}
                                 </Layout>
                             }

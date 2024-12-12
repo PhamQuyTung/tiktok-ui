@@ -1,6 +1,6 @@
 // File này chứa các tuyến đường
 //Layouts
-import { HeaderOnly } from '~/components/Layout';
+import { HeaderOnly } from '~/Layout';
 
 //Pages
 import Home from '~/pages/Home';
@@ -10,15 +10,15 @@ import Upload from '~/pages/Upload';
 import Search from '~/pages/Search';
 
 //
-import RoutesConfig from '~/config/routes';
+import config from '~/config';
 
 //Public routes
 const publicRoutes = [
-    { path: RoutesConfig.home, component: Home },
-    { path: RoutesConfig.following, component: Following },
-    { path: RoutesConfig.nickname, component: Profile },
-    { path: RoutesConfig.upload, component: Upload, layout: HeaderOnly },
-    { path: RoutesConfig.search, component: Search, layout: null }
+    { path: config.routes.home, component: Home },
+    { path: config.routes.following, component: Following },
+    { path: config.routes.nickname, component: Profile },
+    { path: config.routes.upload, component: Upload, layout: HeaderOnly },
+    { path: config.routes.search, component: Search, layout: null }
 ];
 
 const privateRoutes = [
