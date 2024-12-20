@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Header from './Header';
 
 //File này chứa layout chung cố định
@@ -12,5 +13,9 @@ function HeaderOnly({ children }) {
         </div>
     );
 }
+
+HeaderOnly.propTypes = {
+    children: PropTypes.node.isRequired,
+};
 
 export default HeaderOnly;

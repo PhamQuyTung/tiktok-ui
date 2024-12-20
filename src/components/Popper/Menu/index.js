@@ -1,4 +1,5 @@
 //Libary
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react/headless'; // different import path!
 //Fonts
@@ -11,7 +12,8 @@ import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 const defaultFn = function () {};
-function Menu({ children, items = [], hideOnClick = false ,onChange = defaultFn }) {
+
+function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn }) {
     // Chuyền vào tham số mặc định
     const [history, setHistory] = useState([{ data: items }]);
     const current = history[history.length - 1]; // Phần tử cuối cùng của mảng
@@ -42,7 +44,7 @@ function Menu({ children, items = [], hideOnClick = false ,onChange = defaultFn 
             delay={[0, 300]}
             interactive //Cho phép select vào phần tử
             placement="bottom-end"
-            hideOnClick = {hideOnClick}
+            hideOnClick={hideOnClick}
             render={(
                 attrs, //render ra poper kết quả tìm kiếm
             ) => (
@@ -52,7 +54,7 @@ function Menu({ children, items = [], hideOnClick = false ,onChange = defaultFn 
                         {history.length > 1 && (
                             // Nếu kết quả tìm kiếm > 1 thì hiển thị header của menu
                             <MenuHeader
-                                title="Languages"
+                                title={current.title} 
                                 onBack={() => {
                                     setHistory((prev) => prev.slice(0, prev.length - 1));
                                 }} //Back history (nhấn nút back để trở lại vị trí trước đó)
@@ -63,11 +65,18 @@ function Menu({ children, items = [], hideOnClick = false ,onChange = defaultFn 
                     </PopperWrapper>
                 </div>
             )}
-            onHide={() => setHistory((prev) => prev.slice(0, 1))}   // Ẩn menu sẽ reset lại mảng quay về chỉ mục 1 slice(0, 1) 
+            onHide={() => setHistory((prev) => prev.slice(0, 1))} // Ẩn menu sẽ reset lại mảng quay về chỉ mục 1 slice(0, 1)
         >
             {children}
         </Tippy>
     );
 }
+
+Menu.propTypes = {
+    children: PropTypes.node.isRequired, // Nội dung của menu
+    items: PropTypes.arrayOf(PropTypes.object), // Danh sách item menu
+    hideOnClick: PropTypes.bool, // Cho phép ẩn menu khi người dùng click vào phần tử
+    onChange: PropTypes.func, // Hàm thay đ��i khi người dùng chọn item menu
+};
 
 export default Menu;

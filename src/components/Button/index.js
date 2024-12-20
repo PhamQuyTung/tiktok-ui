@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 import styles from './Button.module.scss';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const cx = classNames.bind(styles);
 
@@ -75,6 +76,23 @@ function Button({
     );
 }
 
+Button.propTypes = {
+    to: PropTypes.string,
+    href: PropTypes.string,
+    primary: PropTypes.bool,
+    outline: PropTypes.bool,
+    disabled: PropTypes.bool,
+    small: PropTypes.bool,
+    large: PropTypes.bool,
+    text: PropTypes.bool,
+    rounded: PropTypes.bool,
+    leftIcon: PropTypes.node,
+    rightIcon: PropTypes.node,
+    children: PropTypes.node.isRequired,
+    className: PropTypes.string,
+    onClick: PropTypes.func,
+}
+
 export default Button;
 
 /* 
@@ -127,3 +145,4 @@ export default Button;
 
 Component `Button` này là một button đa năng và linh hoạt với các thuộc tính như `primary`, `outline`, `to`, và `href`. Cách kết hợp `classnames`, CSS Module, và `react-router-dom` giúp component có thể dễ dàng tái sử dụng và tuỳ chỉnh trong nhiều trường hợp khác nhau.
 */
+

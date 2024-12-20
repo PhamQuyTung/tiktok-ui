@@ -1,5 +1,6 @@
 //Header
 //Libary
+import PropTypes from 'prop-types';
 import { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames/bind';
 import TippyHeadless from '@tippyjs/react/headless'; // different import path!
@@ -140,6 +141,10 @@ function SearchHeader() {
             </div>
         </TippyHeadless>
     );
+}
+
+SearchHeader.propTypes = {
+    // PropTypes
 }
 
 export default SearchHeader;
