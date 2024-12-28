@@ -14,10 +14,12 @@ const cx = classNames.bind(styles);
 const defaultFn = function () {};
 
 function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn }) {
+
     // Chuyền vào tham số mặc định
     const [history, setHistory] = useState([{ data: items }]);
     const current = history[history.length - 1]; // Phần tử cuối cùng của mảng
 
+    // Render menu items theo dữ liệu truyền vào
     const renderItems = () => {
         return current.data.map((item, index) => {
             const isParent = !!item.children;
@@ -38,6 +40,37 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
         });
     };
 
+    // Xử lý khi ấn nút back để trở về vị trí trước đó
+    const handleBack = () => {
+        setHistory((prev) => prev.slice(0, prev.length - 1)); // Back history (nhấn nút back để trở lại vị trí trước đó)
+    };
+
+    // Render kết quả tìm kiếm theo tham số attrs ảnh hư��ng đến kết quả hiển thị của menu
+    const renderResult = (
+        attrs, //render ra poper kết quả tìm kiếm
+    ) => (
+        <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
+            <PopperWrapper className={cx('menu-popper')}>
+                {/* Render header của menu */}
+                {history.length > 1 && (
+                    // Nếu kết quả tìm kiếm > 1 thì hiển thị header của menu
+                    <MenuHeader
+                        title={current.title} 
+                        onBack={handleBack} //Back history (nhấn nút back để trở lại vị trí trước đó)
+                    />
+                )}
+                <div className={cx('menu-body')}>{renderItems()}</div>
+                {/* Render item của menu (các ngôn ngữ MENU_ITEMS)*/}
+            </PopperWrapper>
+        </div>
+    )
+
+    // hàm xử lý khi Ẩn menu sẽ reset lại mảng quay về chỉ mục 1 slice(0, 1)
+    const handleResetToFirstPage = () => {
+        setHistory((prev) => prev.slice(0, 1))
+    }
+
+    // Render menu
     return (
         <Tippy
             // visible
@@ -45,31 +78,13 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
             interactive //Cho phép select vào phần tử
             placement="bottom-end"
             hideOnClick={hideOnClick}
-            render={(
-                attrs, //render ra poper kết quả tìm kiếm
-            ) => (
-                <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
-                    <PopperWrapper className={cx('menu-popper')}>
-                        {/* Render header của menu */}
-                        {history.length > 1 && (
-                            // Nếu kết quả tìm kiếm > 1 thì hiển thị header của menu
-                            <MenuHeader
-                                title={current.title} 
-                                onBack={() => {
-                                    setHistory((prev) => prev.slice(0, prev.length - 1));
-                                }} //Back history (nhấn nút back để trở lại vị trí trước đó)
-                            />
-                        )}
-                        <div className={cx('menu-body')}>{renderItems()}</div>
-                        {/* Render item của menu (các ngôn ngữ MENU_ITEMS)*/}
-                    </PopperWrapper>
-                </div>
-            )}
-            onHide={() => setHistory((prev) => prev.slice(0, 1))} // Ẩn menu sẽ reset lại mảng quay về chỉ mục 1 slice(0, 1)
+            render={renderResult}
+            onHide={handleResetToFirstPage} // Ẩn menu sẽ reset lại mảng quay về chỉ mục 1 slice(0, 1)
         >
             {children}
         </Tippy>
     );
+    
 }
 
 Menu.propTypes = {
