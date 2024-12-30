@@ -6,6 +6,7 @@ const RoutesConfig = {
     nickname: '/:nickname', //Tuyến đường cho trang profile
     upload: '/upload',  //Tuyến đường cho trang upload
     search: '/search',  //Tuyến đường cho trang tìm kiếm
+    live: '/live',  //Tuyến đường cho trang live
 };
 
 export default RoutesConfig;
