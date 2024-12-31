@@ -13,13 +13,14 @@
 }
 
 .list-accounts {
-
+    margin: 5px 0;
 }
 
 .account-item {
     display: flex;
     align-items: center;
     padding: 8px;
+    cursor: pointer;
 }
 
 .avatar {
