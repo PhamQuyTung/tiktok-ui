@@ -1,0 +1,63 @@
+.wrapper {
+    border-top: 1px solid rgba(22, 24, 35, 0.12);
+    padding: 16px 0;
+}
+
+.label {
+    font-size: 1.4rem;
+    padding: 0 8px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    line-height: 18px;
+    color: var(--text-color3);
+}
+
+.list-accounts {
+
+}
+
+.account-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.info-item {
+    flex: 1;
+    margin-left: 12px;
+}
+
+.nickname {
+    font-size: 1.6rem;
+    color: var(--text-color2);
+}
+
+.icon-check {
+    margin-left: 8px;
+    color: rgba(32, 213, 236);
+    font-size: 1.4rem;
+}
+
+.username {
+    font-size: 1.2rem;
+    color: var(--text-color3);
+}
+
+.more-btn {
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding: 8px;
+    color: var(--primary);
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
